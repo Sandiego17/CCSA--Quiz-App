@@ -34,12 +34,15 @@ export default {
     },
     data () {
         return {
+            isBusy: false,
             movies: []
         }
     },
     mounted() {
+        this.isBusy = true,
         Axios.get(`${BASE_URL}${this.keyword}?api_key=${API_KEY}`).then(res => {
             this.movies = res.data.results.slice(0, this.numberOfMovies)
+            this.isBusy = false
             console.log(this.movies)
         })
     }

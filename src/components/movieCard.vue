@@ -4,8 +4,8 @@
         <div class="text">
             <div class="title">
                 <!-- <h5 v-if="movie.media_type">{{ movie.title }} ({{movie.release_date}})</h5> -->
-                <h5 v-if="!movie.media_type || movie.media_type == 'movie'">{{ movie.title }} ({{ movie.release_date }})</h5>
-                <h5 v-else>{{ movie.name }} ({{ movie.first_air_date }})</h5>
+                <h5 v-if="!movie.media_type || movie.media_type == 'movie'">{{ movie.title }} ({{ getFullYear(movie.release_date) }})</h5>
+                <h5 v-else>{{ movie.name }} ({{ getFullYear(movie.first_air_date) }})</h5>
             </div>
             <div class="details">
                 <h5>{{ movie.vote_average.toFixed(1) }} Rating</h5>
@@ -17,6 +17,7 @@
 
 <script>
 import { IMG_URL } from './../config.js'
+import { convertToYear } from './../config.js'
 
 export default {
     props: {
@@ -27,6 +28,11 @@ export default {
     data () {
         return {
             imgUrl: IMG_URL
+        }
+    },
+    methods: {
+        getFullYear: function (date) {
+            return convertToYear(date)
         }
     }
 }

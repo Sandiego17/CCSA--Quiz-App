@@ -10,19 +10,13 @@
         <li><router-link to="/upcoming">Upcoming</router-link></li>
       </ul>
     </nav>
-    <!-- <router-view /> -->
-    <movie-list-vue :keyword="'/trending/all/week'" :numberOfMovies="6" :heading="'Trending this week'" />
-    <movie-list-vue :keyword="'/movie/top_rated'" :numberOfMovies="6" :heading="'Top Rated Movies'" />
+    <router-view />
   </div>
 </template>
 
 <script>
-import movieListVue from './components/movieList.vue'
 
 export default {
-  components: {
-    movieListVue
-  }
   
 }
 </script>
